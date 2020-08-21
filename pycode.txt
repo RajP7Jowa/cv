@@ -105,7 +105,7 @@ while more==True:
 	percentage = (total/400)*100
 	print("Save: RollNo.",rollno,", Name", name,", your total marks is",total,"and your percentage is",percentage)
 
-	var1 = rollno+" \t "+name+"\t\t"+math_marks+" \t "+science_marks+" \t "+english_marks+" \t "+computer_marks+" \t "+str(total)+" \t "+percentage+" \n"
+	var1 = rollno+", \t "+name+",\t\t"+math_marks+", \t "+science_marks+", \t "+english_marks+", \t "+computer_marks+", \t "+str(total)+", \t "+percentage+" \n"
 	myfile.writelines(var1)
 
 	'''Save in file Like Spread sheet'''

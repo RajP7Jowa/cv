@@ -165,3 +165,49 @@ OS (Reinstall Option API)
 	}
 	```
 
+# my function demo
+
+```
+function provisioningmodule_actionNetworkFunction($vars)
+{
+    try {
+        $templateFile = 'templates/<templ_file_name>';
+        $response_api = api_functionCall();
+        $success =true;
+        $data = array(
+            'templatefile' => $templateFile,
+            'breadcrumb' => array(
+                'stepurl.php?action=this&var=that' => '<objectName>',
+            ),
+            'vars' => $response_api
+        );
+    } catch (Exception $e) {
+        $success =false;
+        // Record the error in WHMCS's module log.
+        logModuleCall();
+        $msg = $e->getMessage();
+    }
+    if ($success) {
+        return array('dataplot' => $data);
+    } else {
+        return array(
+            'message' => "<div class='alert alert-warning alert-dismissible'><p> " . $msg. " <button'type='button' class='close' data-dismiss='alert'>&times;</button></p></div>",
+        );
+    }
+}
+
+function httpPostCurl(){
+    ....
+    //sent all curl
+    return array("status"=>"1","data"=>$data)
+}
+
+function api_functionCall(){
+    $api_responce = httpPostCurl($api['api_url'], $api_post_array);
+        if ($api_responce['status']) {
+            
+            .....
+            return $modified_data_return 
+        }       
+}
+```
